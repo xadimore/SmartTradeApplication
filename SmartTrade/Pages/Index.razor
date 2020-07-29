@@ -1,0 +1,132 @@
+﻿@page "/"
+@inherits IndexBase
+
+
+
+    <div style="background-color:#12326B" class="box">
+
+        <div class="container pb-5">
+            <div class="row text-white pt-3">
+                <div class="col-6">
+                    <span class="textstyle1">@StockPick price</span>
+                </div>
+
+                <div class="col-6 ml-auto text-right">
+                    <span class="mr-3 textstyle1"><i class="fas fa-bell pr-2"></i>Price alert</span>
+                    <span class="textstyle1"><i class="fas fa-chart-line pr-2"></i>Exchange</span>
+                </div>
+            </div>
+
+
+            <div class="row text-white">
+                <div class="col-6">
+                    <h1 class="bntext font-weight-bolder pb-0 pb-0">NGN @CurrentPrice</h1>
+                    
+                    <p class="textstyle1" style="margin-top: -10px;"> @String.Format("{0:n2}", ((CurrentPrice - PreviousPrice)/PreviousPrice * 100))% @DiffText</p>
+
+                </div>
+
+                <div class="col-6 ml-auto text-right align-self-center">
+                    @*<small class=" p2btn-forprice">Day</small>*@
+
+
+                    <small class="@DayColor @DefaultColor" @onclick="@(() => ChangeData(7))">Week</small>
+
+
+
+                    <small class=" @DefaultColor @MonthColor" @onclick="@(() => ChangeData(30))">Month</small>
+
+                    <small class="@DefaultColor @MonthsColor" @onclick="@(() => ChangeData(60))">6 months</small>
+                    <small class="@DefaultColor @Years" @onclick="@(() => ChangeData(80))">Year</small>
+                    <small class="@DefaultColor @AllTime" @onclick="@(() => ChangeData(100))">All time</small>
+                </div>
+            </div>
+            
+
+            <section class="chart_Section">
+                @if (Prices == null)
+                {
+                  
+                     <div class="stockchartloader">Loading</div>
+                
+                }
+                else
+                {
+            <SfChart Title="" Width="100%" Height="300px" Background="#12326B" Theme="ChartTheme.HighContrast">
+
+                <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+                
+
+                <ChartPrimaryXAxis LabelFormat="yMd" IntervalType="IntervalType.Days" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime">
+                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+
+                </ChartPrimaryXAxis>
+
+                <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+
+                <ChartPrimaryYAxis LabelFormat="₦{value}K" Visible="true" RangePadding="ChartRangePadding.None" LabelPosition="AxisPosition.Inside" OpposedPosition="true">
+                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                    <ChartAxisMajorGridLines Width="1" DashArray="3.1" Color="#BCDCF0"></ChartAxisMajorGridLines>
+                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                    
+
+                </ChartPrimaryYAxis>
+
+
+                <ChartSeriesCollection>
+                    <ChartSeries DataSource="@Prices" XName="Date" YName="Close" Type="ChartSeriesType.Spline" Width="2" Fill="white">
+                        
+                        
+                    </ChartSeries>
+                </ChartSeriesCollection>
+            </SfChart>
+                }
+
+                
+            </section>
+
+            
+
+            <section class="p-5">
+                <div class="d-flex justify-content-center pb-5">
+                    <small class=" p2btn-forprice font-weight-bold @Zenith" @onclick="@(() => ChangeStock("ZENITHBANK"))">ZENITHBANK</small>
+                    <small class=" p2btn-forprice font-weight-bold @Wema"  @onclick="@(() => ChangeStock("WEMABANK"))">WEMABANK</small>
+                    <small class=" p2btn-forprice font-weight-bold @Mtnn"  @onclick="@(() => ChangeStock("MTNN"))">MTN</small>
+                    <small class=" p2btn-forprice font-weight-bold @Guaranty"  @onclick="@(() => ChangeStock("GUARANTY"))">GUARANTY </small>
+                    <small class=" p2btn-forprice font-weight-bold @AirtelAfri"  @onclick="@(() => ChangeStock("AIRTELAFRI"))">AIRTEL AFRICA</small>
+                    <small class=" p2btn-forprice font-weight-bold @Uba"  @onclick="@(() => ChangeStock("UBA"))">UBA</small>
+                </div>
+            </section>
+
+           
+        </div>
+    </div>
+
+    <div class="bg-light pb-5 ">
+        <div class="container">
+            <section class="d-flex justify-content-center cbox">
+                <div id="buycaculator">
+                    <div class="px-5 pt-5 pb-2 ">
+                        <h4 class="font-weight-bold text-center" style="color: #12326B">How much @StockPick do you want to buy?</h4>
+                        <div class="d-flex justify-content-center pt-3">
+                            <small class=" p2btn-foramount font-weight-bold text-dark @AmountColor" @onclick="@(() => ChangeAmount(5000))">NGN 5,000</small>
+                            <small class=" p2btn-foramount font-weight-bold text-dark @AmountColor2" @onclick="@(() => ChangeAmount(10000))" >NGN 10,000</small>
+                            <small class=" p2btn-foramount font-weight-bold text-dark @AmountColor3" @onclick="@(() => ChangeAmount(0))">Own Amount</small>
+                        </div>
+
+                        <div class="pt-5">
+                            <input placeholder="Own Amount" class="form-control form-control-lg mb-3 pt-4 pb-4  text-center border border-primary" style="display: @OwnAmount" />
+
+                            <input value="@StockPick :  @AmounttoBuy.ToString("0") " class="form-control form-control-lg pt-4 pb-4 shadow-none text-center" readonly />
+
+
+                            <div class="p-5 text-center"><a class="btn btn-lg bg-primary text-white px-5 font-weight-bolder btn-block" style="font-weight:700">BUY</a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+    </div>
+

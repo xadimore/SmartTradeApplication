@@ -1,0 +1,121 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Changa', sans-serif;
+}
+
+
+
+.navbar-brand{
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.textstyle1{
+    font-size : 0.9rem;
+}
+
+
+.bntext {
+    font-weight: 800;
+    font-size: 40px;
+    font-family: 'Changa', sans-serif;
+    line-height: 44px;
+    Color: #ffffff;
+}
+
+.p2btn-forprice {
+    border: 1px solid white;
+    padding: 10px;
+    margin:3px;
+    letter-spacing: 1px;
+    color: white;
+    border-radius: 15px;
+}
+
+
+.ChangeColor {
+    background-color: white;
+    color: #12326B;
+    border: 1px solid white;
+    padding: 10px;
+    margin: 3px;
+    
+    border-radius: 15px;
+}
+
+
+    .p2btn-forprice:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+
+.chart_Section{
+    max-height : 300px;
+    min-height: 300px;
+}
+
+#buycaculator{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.p2btn-foramount {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 3px;
+    color:black;
+    border-radius: 10px;
+}
+
+    .p2btn-foramount:hover {
+        background-color: rgba(191, 191, 191, 0.3);
+        border: 1px solid #808080;
+    }
+
+
+.form-control {
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.cbox {
+
+    position: relative;
+    top: -100px;
+}
+
+
+
+.box {
+    border: solid 5px #12326B;
+    border-color: transparent transparent #12326B transparent;
+    border-radius: 0% 0% 50% 50% / 80% 73% 15% 15%;
+}
+
+
+
+.stockchartloader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #7a0fff;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 46%;
+    left: 46%;
+    border-radius: 50%;
+    -webkit-animation: loader 2s linear infinite;
+    animation: loader 2s linear infinite;
+}
+
+.stockchartdiv {
+    visibility: hidden;
+}
+

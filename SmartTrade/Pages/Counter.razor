@@ -1,0 +1,31 @@
+﻿@page "/counter"
+@inherits CounterBase
+
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Symbol</th>
+                <th>Open</th>
+                <th>Close</th>
+            </tr>
+        </thead>
+        <tbody>
+           @*@foreach(var item in PricesX)
+           {
+              
+                   <tr>
+                       <td>@item.Date.ToShortDateString()</td>
+                       <td>@item.Symbol</td>
+                       <td>@item.OpeningPrice</td>
+                       <td>@item.ClosingPrice</td>
+                   </tr>
+               
+           }*@
+        </tbody>
+    </table>
+</div>
+
+
